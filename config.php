@@ -4,10 +4,6 @@
    // Just my simple AppID pointer to identify Application / Script in my catalog
    $config['app']['id'] = '';
 
-   // 
-   $config['xml']['header'] = '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mdsml PUBLIC "-//emacsian/MDSML 10.0" "http://web.emacsian.com/MetInfo/mdsml-10.0.dtd">';
-   $config['xml']['root']   = 'mdsml';
-
    //
    // Data Cache
    //
