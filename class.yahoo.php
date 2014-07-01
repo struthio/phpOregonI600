@@ -134,7 +134,7 @@
         
         function getForecastByStation($inStationID)
         {
-            $yqlQuery = 'select atmosphere,item from weather.forecast where woeid='.$inStationID;
+            $yqlQuery = 'select atmosphere,item from weather.forecast where woeid='.$inStationID.' and u=\'c\'';
             $tYahooData = $this->getYahooData($yqlQuery);
             
             if

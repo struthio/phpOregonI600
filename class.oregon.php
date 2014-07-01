@@ -203,7 +203,7 @@
                     $tForecastEntry['value'][] = $tDayForecastEntry;
                 }
                 
-                $tReturn[] = $tForecastEntry;
+                //$tReturn[] = $tForecastEntry;
                 
                 //TODO: Change to correct Localtime!!
                 $tTimeUTC = Array();
@@ -215,8 +215,11 @@
                 $tTimeEntry = Array();
                 $tTimeEntry['name'] = 'time';
                 $tTimeEntry['value'][] = $tTimeUTC;
+   
+                $tForecastEntry['value'][] = $tTimeEntry;
 
-                $tReturn[] = $tTimeEntry;
+                //$tReturn[] = $tTimeEntry;
+                $tReturn[] = $tForecastEntry;
             }
 
             //TODO: Change to correct UTC Time!

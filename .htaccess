@@ -6,5 +6,6 @@ RewriteRule ^client_software_info/?$         controller.php?mode=client_software
 RewriteRule ^region_list?$                   controller.php?mode=region_list                 [NC,L]  # Handle Region Listing
 RewriteRule ^country_area_list/([0-9]+)/?$   controller.php?mode=country_area_list&region=$1 [NC,L]  # Handle Country Area Listing
 RewriteRule ^station_list/([0-9]+)/?$        controller.php?mode=station_list&area=$1        [NC,L]  # Handle Station Listing
+RewriteRule ^station_list/normal?$           controller.php?mode=station_list&area=23424923  [NC,L]  # Handle Strange /normal point
 
 RewriteRule ^wxfcsts/([0-9,]+)/?$            controller.php?mode=wxfcsts&stations=$1         [NC,L]  # Handle City Weather Requests
