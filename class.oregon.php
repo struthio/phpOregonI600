@@ -188,6 +188,7 @@
                 $tForecastEntry['attributes']['latitude'] = $inForecastEntry['position']['latitude'];
                 $tForecastEntry['attributes']['longitude'] = $inForecastEntry['position']['longitude'];
 
+		$tIconTest = 35;
                 foreach($inForecastEntry['forecast'] AS $inDayForecastKey => $inDayForecastEntry)
                 {
                     $tDayForecastEntry = Array();
@@ -196,7 +197,7 @@
                     (
                         Array('name' => 'maxtemp', 'value' => $inDayForecastEntry['temperature']['maximal']),
                         Array('name' => 'mintemp', 'value' => $inDayForecastEntry['temperature']['minimal']),
-                        Array('name' => 'icon', 'value' => '23')
+                        Array('name' => 'icon', 'value' => ++$tIconTest)
                     );
                     $tDayForecastEntry['attributes']['day'] = $inDayForecastKey;
 
@@ -206,15 +207,15 @@
                 //$tReturn[] = $tForecastEntry;
                 
                 //TODO: Change to correct Localtime!!
-                $tTimeUTC = Array();
-                $tTimeUTC['name'] = 'localtime';
-                $tTimeUTC['value'] = date('Y-m-d H:i:s').' UTC';
-                $tTimeUTC['attributes']['utcoffset'] = '0';
-                $tTimeUTC['attributes']['stdoffset'] = '0';
+                $tTimeLocal = Array();
+                $tTimeLocal['name'] = 'localtime';
+                $tTimeLocal['value'] = $inForecastEntry['general']['time']['value'];
+                $tTimeLocal['attributes']['utcoffset'] = $inForecastEntry['general']['time']['utcoffset'];
+                $tTimeLocal['attributes']['stdoffset'] = '0';
 
                 $tTimeEntry = Array();
                 $tTimeEntry['name'] = 'time';
-                $tTimeEntry['value'][] = $tTimeUTC;
+                $tTimeEntry['value'][] = $tTimeLocal;
    
                 $tForecastEntry['value'][] = $tTimeEntry;
 
@@ -223,9 +224,12 @@
             }
 
             //TODO: Change to correct UTC Time!
+            $tUTCDateTime = new DateTime('now');
+            $tUTCDateTime->setTimezone(new DateTimeZone('UTC'));
+
             $tTimeUTC = Array();
             $tTimeUTC['name'] = 'utc';
-            $tTimeUTC['value'] = date('Y-m-d H:i:s').' UTC';
+            $tTimeUTC['value'] = $tUTCDateTime->format('Y-m-d H:i:s').' UTC';
             $tTimeUTC['attributes']['utcoffset'] = '0';
             $tTimeUTC['attributes']['stdoffset'] = '0';
 

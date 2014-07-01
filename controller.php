@@ -20,7 +20,7 @@
 	  
     // Setup Oregon Class
     $pOregon  = new cOregonXML();
-    $pWeather = new cYahooWeather(true);
+    $pWeather = new cYahooWeather(true,'/tmp/');
 	  
     switch($_GET['mode'])
     {

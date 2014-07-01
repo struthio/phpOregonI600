@@ -12,6 +12,7 @@
         var $iCacheRetention = 10;                // How many minutes cache is considered 'fresh'
                                                 // This value will be overwritten by Yahoo TTL parameter
         var $aCacheStore   = Array();
+        var $bDebugMode    = true;
 
 	  
         function __construct($inCacheEnabled = false, $inCachePath = '', $inCacheRetention = 3600)
@@ -121,7 +122,8 @@
 
         function getStationsByCountry($inCountryID)
         {
-            $yqlQuery = 'select woeid, name from geo.places.children where parent_woeid = '.$inCountryID;
+            $yqlQuery = 'select woeid, placeTypeName, name from geo.places.descendants where ancestor_woeid in (select woeid from geo.states where place='.$inCountryID.') and placetype = 7';
+            //$yqlQuery = 'select woeid, name from geo.places.children where parent_woeid = '.$inCountryID;
             $tYahooData = $this->getYahooData($yqlQuery);
 
             $tReturn = Array();
@@ -165,6 +167,30 @@
                 $tReturn['forecast'][$inForecastKey]['temperature']['maximal'] = $inForecastEntry->high;
                 // TODO TRANSLATE CODES TO REGON ! $inForecastEntry->code;
                 $tReturn['forecast'][$inForecastKey]['temperature']['text'] = $inForecastEntry->text;
+            }
+            
+            $tReturn['general']['time'] = $this->getTimeByID($inStationID);
+            
+            return $tReturn;
+        }
+
+        function getTimeByID($inStationID)
+        {
+            $yqlQuery = 'select timezone from geo.places where woeid = '.$inStationID;
+            $tYahooData = $this->getYahooData($yqlQuery);
+            $tReturn = Array('value'=>time(),'utcoffset' => 0);
+            if (isset($tYahooData->query->count) && $tYahooData->query->count > 0)
+            {
+                $tLocalTimeZone = $tYahooData->query->results->place->timezone->content;
+                $tDateTime = new DateTime(); // Get current server time
+                $tTimeZone = new DateTimeZone($tLocalTimeZone);
+                $tDateTime->setTimezone($tTimeZone);
+                //$tLocalTime = $tDateTime->format('Y-m-d H:i:s').' '.$tTimeZone;
+
+                //$tUTCTimeZone = new DateTimeZone("UTC");
+
+                $tReturn['value'] = $tDateTime->format('Y-m-d H:i:s').' '.$tLocalTimeZone;
+                $tReturn['utcoffset'] = $tTimeZone->getOffset($tDateTime);// - $tUTCTimeZone->getOffset();
             }
 
             return $tReturn;
