@@ -15,6 +15,6 @@
                                              // Web serwer shuld gave r/w access to this folder
    $config['cache']['retention'] = 10;       // Cache retention time (in Minutes)
 
-   $confog['cache']['files'][''] = 'cache_city.log';
+   //$confog['cache']['files'][''] = 'cache_city.log';
 
 ?>
