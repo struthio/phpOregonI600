@@ -19,12 +19,14 @@
 	  
         function __construct($inCacheEnabled = false, $inCachePath = '', $inCacheRetention = 3600)
         {
+            global $config;
+        
             $this->bCacheEnabled    = $inCacheEnabled;
             $this->sCachePath       = $inCachePath;
             $this->iCacheRetention  = $inCacheRetention;
 			
 			if ($this->bCacheEnabled)
-				$this->oCache           = new cCache();
+				$this->oCache           = new cCache($config['database']);
         }
 	  
         // Function caches data in file on disk
