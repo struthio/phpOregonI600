@@ -188,7 +188,7 @@
                 $tForecastEntry['attributes']['latitude'] = $inForecastEntry['position']['latitude'];
                 $tForecastEntry['attributes']['longitude'] = $inForecastEntry['position']['longitude'];
 
-		$tIconTest = 35;
+		$tIconTest = 0;
                 foreach($inForecastEntry['forecast'] AS $inDayForecastKey => $inDayForecastEntry)
                 {
                     $tDayForecastEntry = Array();

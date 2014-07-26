@@ -1,5 +1,13 @@
+# Required by 00webhost to avoid statistics script 
+<FilesMatch "\.(php)$">
+	php_value auto_append_file none
+</FilesMatch>
+
 # URL Rewritting Engine
 RewriteEngine On                                                                                   # Turn on the rewriting engine
+
+# Required by 00webhost
+RewriteBase /mds
 
 RewriteRule ^client_software_info/?$         controller.php?mode=client_software_info        [NC,L]  # Handle Client Software Info (Not Much Supported)
 

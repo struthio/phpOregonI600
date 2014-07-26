@@ -17,11 +17,11 @@
     if (!isset($_GET['mode']) || empty($_GET['mode']))
         $_GET['mode'] = 'null';
 
-	  
+    
     // Setup Oregon Class
     $pOregon  = new cOregonXML();
-    $pWeather = new cYahooWeather(true,'/tmp/');
-	  
+    $pWeather = new cYahooWeather(false,'/tmp/');
+    
     switch($_GET['mode'])
     {
         case 'client_software_info':
