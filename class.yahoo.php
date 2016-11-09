@@ -129,7 +129,7 @@
 			//
             if ($this->bCacheEnabled && !empty($tReturn))
 			{
-				$this->oCache->getValue('cYahooWeather','getRegions',serialize($this->iCacheRetention))
+				$this->oCache->getValue('cYahooWeather','getRegions',serialize($this->iCacheRetention));
 			}
 					
             return $tResult;
@@ -170,7 +170,7 @@
 			//
             if ($this->bCacheEnabled && !empty($tReturn))
 			{
-				$this->oCache->getValue('cYahooWeather','getCountryByRegion:'.$inRegionID,serialize($this->iCacheRetention))
+				$this->oCache->getValue('cYahooWeather','getCountryByRegion:'.$inRegionID,serialize($this->iCacheRetention));
 			}
 
             return $tReturn;
@@ -202,7 +202,7 @@
 			//
             if ($this->bCacheEnabled && !empty($tReturn))
 			{
-				$this->oCache->getValue('cYahooWeather','getStationsByCountry:'.$inCountryID,serialize($this->iCacheRetention))
+				$this->oCache->getValue('cYahooWeather','getStationsByCountry:'.$inCountryID,serialize($this->iCacheRetention));
 			}
 					
             return $tReturn;
@@ -260,7 +260,7 @@
 			//
             if ($this->bCacheEnabled && !empty($tReturn))
 			{
-				$this->oCache->getValue('cYahooWeather','getForecastByStation:'.$inStationID,serialize($this->iCacheRetention))
+				$this->oCache->getValue('cYahooWeather','getForecastByStation:'.$inStationID,serialize($this->iCacheRetention));
 			}
 			
             return $tReturn;
@@ -300,7 +300,7 @@
 			//
             if ($this->bCacheEnabled && !empty($tReturn))
 			{
-				$this->oCache->getValue('cYahooWeather','getTimeByID:'.$inStationID,serialize($this->iCacheRetention))
+				$this->oCache->getValue('cYahooWeather','getTimeByID:'.$inStationID,serialize($this->iCacheRetention));
 			}
 			
             return $tReturn;

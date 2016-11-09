@@ -48,7 +48,7 @@
 			if (empty($inClass))
 				$inClass = '<default>';
 			
-			$inTimeout := $inTimeout * 60;
+			$inTimeout = $inTimeout * 60;
 			$tmpHash = crc32($inClass.'.'.$inKey);
 			return run_sql("SELECT cnf_value FROM oi600_cache WHERE cnf_hash = ".$tmpHash." AND cnf_class = '".mysqli_real_escape_string ($inClass)."' AND cnf_key = '".mysqli_real_escape_string ($inKey)."' AND cnf_timestamp > (NOW() - ".$inTimeout.")",true);
 
@@ -63,7 +63,7 @@
 				$inClass = '<default>';
 			
 			$tmpHash = crc32($inClass.'.'.$inKey);
-			run_sql("INSERT INTO oi600_cache (cnf_timestamp,cnf_hash,cnf_class,cnf_key,cnf_value) VALUES(NOW(),".$tmpHash." , '".mysqli_real_escape_string ($inClass)."', '".mysqli_real_escape_string ($inKey)."', '".mysqli_real_escape_string ($inValue)."') ON DUPLICATE KEY UPDATE cnf_value = '".mysqli_real_escape_string ($inValue)"'");
+			run_sql("INSERT INTO oi600_cache (cnf_timestamp,cnf_hash,cnf_class,cnf_key,cnf_value) VALUES(NOW(),".$tmpHash." , '".mysqli_real_escape_string ($inClass)."', '".mysqli_real_escape_string ($inKey)."', '".mysqli_real_escape_string ($inValue)."') ON DUPLICATE KEY UPDATE cnf_value = '".mysqli_real_escape_string ($inValue)."'");
 		}
     };
 ?>

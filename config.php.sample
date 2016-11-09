@@ -10,7 +10,7 @@
    //   Cache also enables simple data presentation in index.php
    //   
    //
-   $config['cache']['enable']    = true;     // Enable Cache
+   $config['cache']['enable']    = false;     // Enable Cache
    $config['cache']['path']      = 'cache/'; // Folder where cache file should be stored
                                              // Web serwer shuld gave r/w access to this folder
    $config['cache']['retention'] = 10;       // Cache retention time (in Minutes)
