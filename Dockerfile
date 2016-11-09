@@ -7,7 +7,7 @@ RUN apt-get update && \
     unzip /master.zip && \
     mv /phpOregonI600-master /var/www/html/mds && \
     ln -s /var/www/html/mds/config.php.sample /var/www/html/mds/config.php && \
-    sed -i "2i<Directory /var/www/html>\nOptions Indexes FollowSymLinks MultiViews\nAllowOverride All\nOrder allow,deny\nallow from a
+    sed -i "2i<Directory /var/www/html>\nOptions Indexes FollowSymLinks MultiViews\nAllowOverride All\nOrder allow,deny\nallow from all\n</Directory>" /etc/apache2/sites-available/000-default.conf && \
     apt-get remove --purge -y wget unzip && \
     apt-get clean -y && \
     apt-get autoclean -y && \
